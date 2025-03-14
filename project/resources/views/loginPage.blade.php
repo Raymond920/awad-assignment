@@ -8,14 +8,14 @@
 <body>
     <h1>Login Page</h1>
     <br>
-    <form action="" >
+    <form action="{{ route('login') }}" method="post">
         @csrf
         Email: <input type="text" name="email">
         <br>
         Password:
         <input type="password" id="password" name="password">
         <br>
-        <input type="submit" value="Login">
+        <button type="submit" value="Login">Login</button>
     </form>
 </body>
 </html>
