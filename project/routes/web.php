@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\HomeController;
 
 Route::get('/welcome', function () {
     return view('welcome');
@@ -15,3 +16,5 @@ Route::post('/login', [LoginController::class, 'login']);
 
 
 Route::get('/', [LoginController::class, 'printUserTable']);
+
+Route::get('/home', [HomeController::class, 'showHomePage']);
