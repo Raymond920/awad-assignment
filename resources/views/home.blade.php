@@ -9,19 +9,18 @@
 <body>
     <x-header />
     <div class="container">
-
-        <div class="header">
-        </div>
         <div class="content">
             <x-side-navbar />
             <div class="main-content">
                 <h1>Welcome to the Home Page</h1>
                 <p>This is the main content area.</p>
             </div>
+            <div class="right-content">
+                <h1>Right content:</h1>
+                <p>This is the right content area.</p>
+                <x-footer />
+            </div>
         </div>
-        <div class="footer">
-            <x-footer />
-        </div>
-
+    </div>
 </body>
 </html>

@@ -13,12 +13,13 @@
 
 /* When closed */
 .side-navbar {
-    width: 2%;
+    width: 2vh;
+    transition: width 0.2s ease;
 }
 
 /* When expanded */
 .side-navbar.expanded {
-    width: 20%;
+    width: 20vh;
 }
 
 
