@@ -10,7 +10,9 @@
     <x-header />
     <div class="container">
         <div class="content">
-            <x-side-navbar />
+            <div style="overflow: auto;">
+                <x-side-navbar />
+            </div>
             <div class="main-content">
                 <h1>Welcome to the Home Page</h1>
                 <p>This is the main content area.</p>
