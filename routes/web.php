@@ -1,20 +1,18 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
-// load login page
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::get('/signup', function () {
+    return view('users.create');
+});
 
-// Handle login request
-Route::post('/login', [LoginController::class, 'login']);
-
-
-Route::get('/', [LoginController::class, 'printUserTable']);
+Route::get('/login', function () {
+    return view('auth.login');
+});
 
 Route::get('/home', [HomeController::class, 'showHomePage']);
