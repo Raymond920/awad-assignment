@@ -1,47 +1,53 @@
-/* Sidebar Styling */
-.side-navbar {
-    position: fixed;
-    left: -250px; /* Hidden by default */
+/* when button onclick */
+.side-navbar, 
+.side-navbar.expanded {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    background-color: grey;
+    height: 100vh;
+    position: sticky;
     top: 0;
-    width: 250px;
-    height: 100%;
-    background-color: #333;
-    padding-top: 20px;
-    transition: left 0.3s ease-in-out;
-    padding-top: 80px; /* Extra space to avoid overlap */
 }
+
+/* When closed */
+.side-navbar {
+    width: 2%;
+}
+
+/* When expanded */
+.side-navbar.expanded {
+    width: 20%;
+}
+
 
 .side-navbar a {
-    display: block;
-    padding: 10px;
-    color: white;
+    opacity: 0;
+}
+
+
+.side-navbar.expanded a {
+    opacity: 1;
     text-decoration: none;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
 }
 
-.side-navbar a:hover {
-    background-color: #575757;
+.side-navbar.expanded a:hover {
+    background-color: #ddd;
 }
 
-/* Open Button */
-.open-btn {
-    position: fixed;
-    top: 60px;
-    left: 10px;
-    background-color: #007BFF;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    cursor: pointer;
-}
-
-/* Close Button */
-.close-btn {
-    position: absolute;
-    top: 60px;
-    right: 15px;
-    background: none;
+.side-navbar.expanded .close-btn, .side-navbar .expand-btn {
+    background-color: red;
+    margin-right: -30px;
+    margin-left: auto;
+    width: fit-content;
     color: white;
     border: none;
-    font-size: 20px;
+    padding: 10px;
+    border-radius: 5px;
     cursor: pointer;
 }
