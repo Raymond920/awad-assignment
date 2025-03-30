@@ -1,0 +1,53 @@
+/* when button onclick */
+.side-navbar, 
+.side-navbar.expanded {
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+    background-color: grey;
+    height: 100vh;
+    position: sticky;
+    top: 0;
+}
+
+/* When closed */
+.side-navbar {
+    width: 2%;
+}
+
+/* When expanded */
+.side-navbar.expanded {
+    width: 20%;
+}
+
+
+.side-navbar a {
+    opacity: 0;
+}
+
+
+.side-navbar.expanded a {
+    opacity: 1;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.side-navbar.expanded a:hover {
+    background-color: #ddd;
+}
+
+.side-navbar.expanded .close-btn, .side-navbar .expand-btn {
+    background-color: red;
+    margin-right: -30px;
+    margin-left: auto;
+    width: fit-content;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}

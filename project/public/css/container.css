@@ -1,0 +1,41 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    /* height: 200vh; */
+}
+
+.container {
+    display: grid;
+    grid-template-areas:
+      "header" 
+      "content"
+      "footer";
+}
+
+/* apply style to direct child of container class*/
+.container > div {
+    padding: 0px;
+}
+
+.container > div.header {
+    grid-area: header;
+    text-align: center;
+    /* padding: 0px; */
+}
+.container > div.content {
+    grid-area: content;
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+    padding: 0px;
+    overflow-y: auto;
+    position: relative;
+}
+.container > div.footer {
+    grid-area: footer;
+    height: 60px;
+}
+  
