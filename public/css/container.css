@@ -1,41 +1,25 @@
 html, body {
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
 }
-
-body {
-    /* height: 200vh; */
-}
-
-.container {
+.grid-container {
     display: grid;
-    grid-template-areas:
-      "header" 
-      "content"
-      "footer";
+    grid-template-columns: auto 4fr 3fr;
+    gap: 20px;
+    min-height: 200vh; /* Force scrolling for demo */
 }
 
-/* apply style to direct child of container class*/
-.container > div {
-    padding: 0px;
+.grid-column {
+    background: #f0f0f0;
+    padding: 20px;
 }
 
-.container > div.header {
-    grid-area: header;
-    text-align: center;
-    /* padding: 0px; */
-}
-.container > div.content {
-    grid-area: content;
+.right-content {
+    position: sticky;
+    top: calc(5vh + 40px); /* Adjusted to account for header height */
     display: flex;
-    flex-direction: row;
-    gap: 40px;
-    padding: 0px;
-    overflow-y: auto;
-    position: relative;
+    height: calc(85vh); /* Adjusted to account for header height */
+    flex-direction: column;
+    gap: 10px;
 }
-.container > div.footer {
-    grid-area: footer;
-    height: 60px;
-}
-  
