@@ -1,36 +1,25 @@
 html, body {
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
 }
-
-body {
-    display: flex;
-    flex-direction: column;
-}
-
-.container {
-    display: flex;
-    overflow-y: auto;
-}
-
-/* apply style to direct child of container class*/
-.container > div {
-    padding: 0px;
-    overflow-y: auto;
-}
-
-.container > div.content {
-    overflow-y: auto;
+.grid-container {
     display: grid;
-    width: 100%;
-    gap: 10px;
-    grid-template-columns: auto 2fr 1fr;
+    grid-template-columns: auto 4fr 3fr;
+    gap: 20px;
+    min-height: 200vh; /* Force scrolling for demo */
 }
 
-.container > div.content > div {
-    padding: 10px;
-    height: 200vh;
-    background-color: #f0f0f0;
-    border-radius: 5px;
-    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+.grid-column {
+    background: #f0f0f0;
+    padding: 20px;
+}
+
+.right-content {
+    position: sticky;
+    top: calc(5vh + 40px); /* Adjusted to account for header height */
+    display: flex;
+    height: calc(85vh); /* Adjusted to account for header height */
+    flex-direction: column;
+    gap: 10px;
 }
