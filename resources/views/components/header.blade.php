@@ -13,8 +13,7 @@
     </div>
 
     <!-- Right: Login & more... (log out stuff) -->
-    <div>
+    <a href="{{ route('show.login') }}">
         <button>Log In</button>
-    </div>
+    </a>
 </header>
-
