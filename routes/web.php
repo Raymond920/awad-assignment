@@ -15,4 +15,11 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/home', [HomeController::class, 'showHomePage']);
-Route::view('/', 'home')->name('home');
+
+Route::get('/', function () {
+    return view('testSticky');
+});
+
+Route::get('/test2', function () {
+    return view('test2');
+});

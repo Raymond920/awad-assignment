@@ -2,9 +2,11 @@
 
 <header>
     <!-- Left: Logo & Name -->
-    <div>
-        <img src="{{ asset('images/logo.png') }}" alt="Logo">
-        <span>Website Name</span>
+    <div class="website-name-container">
+        <div class="logo-container">
+            <img src="{{ asset('images/logo.png') }}" alt="Logo">
+        </div>
+        <span>Inter-Knot</span>
     </div>
 
     <!-- Center: Search Bar -->
