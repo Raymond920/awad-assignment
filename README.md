@@ -60,7 +60,7 @@ This project is an online discussion forum built with Laravel, inspired by Reddi
 
 6. **Run database migrations**
    ```
-   php artisan migrate # or php aritsan migrate:fresh for fresh database
+   php artisan migrate # or php artisan migrate:fresh for fresh database
    ```
 
 7. **Start the development server**
