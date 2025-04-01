@@ -1,19 +1,20 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\LoginController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\Auth\AuthController;
 
 Route::get('/welcome', function () {
     return view('welcome');
 });
 
-// load login page
-Route::get('/login', [LoginController::class, 'showLoginForm'])->name('login');
+Route::view('/register', 'auth.register')->name('show.register');
+Route::view('/login', 'auth.login')->name('show.login');
+Route::post('/register', [AuthController::class, 'register'])->name('register');
+Route::post('/login', [AuthController::class, 'login'])->name('login');
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
-// Handle login request
-Route::post('/login', [LoginController::class, 'login']);
-
+Route::get('/home', [HomeController::class, 'showHomePage']);
 
 // Route::get('/', [LoginController::class, 'printUserTable']);
 
@@ -24,5 +25,3 @@ Route::get('/', function () {
 Route::get('/test2', function () {
     return view('test2');
 });
-
-Route::get('/home', [HomeController::class, 'showHomePage']);
