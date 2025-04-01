@@ -16,6 +16,8 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/home', [HomeController::class, 'showHomePage']);
 
+// Route::get('/', [LoginController::class, 'printUserTable']);
+
 Route::get('/', function () {
     return view('testSticky');
 });
