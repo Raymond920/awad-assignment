@@ -30,14 +30,11 @@ This project is an online discussion forum built with Laravel, inspired by Reddi
 
 ### Installation Steps
 
-1. **Start your local server environment**
-   ```
-   # Start WampServer
-   ```
+1. Start WampServer
 
 2. **Clone the repository**
    ```
-   git clone [repository-url]
+   git clone https://github.com/Raymond920/awad-assignment.git
    cd awad-assignment
    ```
 
