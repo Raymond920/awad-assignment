@@ -25,3 +25,7 @@ Route::get('/', function () {
 Route::get('/test2', function () {
     return view('test2');
 });
+
+Route::get('/posts', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/{id}', [PostController::class, 'show'])->name('posts.show');
+Route::post('/posts', [PostController::class, 'store'])->name('posts.store');
