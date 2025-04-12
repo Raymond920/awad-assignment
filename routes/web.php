@@ -4,6 +4,11 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Auth\AuthController;
 
+// for testing post purpose
+use App\Http\Controllers\PostController;
+Route::get('/post/{id}', [PostController::class, 'show']);
+// end of test post
+
 Route::get('/welcome', function () {
     return view('welcome');
 });
@@ -15,13 +20,3 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/home', [HomeController::class, 'showHomePage']);
-
-// Route::get('/', [LoginController::class, 'printUserTable']);
-
-Route::get('/', function () {
-    return view('testSticky');
-});
-
-Route::get('/test2', function () {
-    return view('test2');
-});
