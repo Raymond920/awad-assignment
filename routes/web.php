@@ -20,3 +20,5 @@ Route::post('/login', [AuthController::class, 'login'])->name('login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 Route::get('/home', [HomeController::class, 'showHomePage']);
+
+Route::get('/', [PostController::class, 'index'])->name('home');
