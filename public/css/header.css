@@ -2,7 +2,7 @@ header {
     position: sticky;
     top: 0;
     width: 100% - 20px; /* Adjusted to account for side navbar width */
-    height: 5vh;
+    height: 7vh;
     display: flex;
     align-items: center;
     justify-content: space-between;
