@@ -26,7 +26,8 @@ class PostController extends Controller
         return view('posts.show', compact('post'));
     }
 
-    public function store(){
+    public function store()
+    {
         // Validate the request data
         $validatedData = request()->validate([
             'title' => 'required|string|max:255',
@@ -38,13 +39,5 @@ class PostController extends Controller
 
         // Redirect to the posts index page with a success message
         return redirect()->route('posts.index')->with('success', 'Post created successfully!');
-    }
-
-    public function index(){
-        // fetch all posts from database
-        $posts = Post::all();
-
-        // pass the posts data to home view
-        return view('home', compact('posts'));
     }
 }

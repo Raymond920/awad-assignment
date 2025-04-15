@@ -18,8 +18,8 @@
         <div class="grid-column">
             <div class="post-cards-container">
                 {{-- retrieve and display each post from posts table --}}
-                @foreach($posts as $post)
-                    <x-post-card :post="$post" />
+                @foreach(\App\Models\Post::all() as $post)
+                <x-post-card :post="$post" />
                 @endforeach
             </div>
         </div>
