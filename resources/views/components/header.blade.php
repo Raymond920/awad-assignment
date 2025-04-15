@@ -11,7 +11,7 @@
     </div>
 
     <!-- Center: Search Bar -->
-    <input type="text" placeholder="Search..." class="h-8 px-3 border rounded-full">
+    {{-- <input type="text" placeholder="Search..." class="h-8 px-3 border rounded-full"> --}}
 
     <!-- Right: Login & more... (log out stuff) -->
     @guest

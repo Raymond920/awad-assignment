@@ -38,9 +38,10 @@ html, body {
 
 .grid-container {
     display: grid;
-    grid-template-columns: auto 4fr 2fr;
+    /* grid-template-columns: auto 4fr 2fr; */
+    grid-template-columns: auto 4fr;
     gap: 20px;
-    min-height: 200vh; /* Force scrolling for demo */
+    min-height: calc(100vh - 7vh); /* Force scrolling for demo */
 }
 
 .grid-column {
@@ -59,11 +60,7 @@ html, body {
     width: auto;
 }
 
-.right-content {
-    position: sticky;
-    top: calc(5vh + 40px); /* Adjusted to account for header height */
+.post-column {
     display: flex;
-    height: calc(85vh); /* Adjusted to account for header height */
-    flex-direction: column;
-    gap: 10px;
+    align-items: center;
 }

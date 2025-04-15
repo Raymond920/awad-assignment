@@ -6,11 +6,17 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
-    // this method is just for testing can delete later
     public function show($id)
     {
         $post = Post::find($id);  // Retrieve the post by its ID
-        return view('testing', compact('post'));  // Pass the post to the 'home' view
+        return view('showPost', compact('post')); 
+    }
+
+    // this method is just for testing can delete later
+    public function test($id)
+    {
+        $post = Post::find($id);  // Retrieve the post by its ID
+        return view('testing', compact('post')); 
     }
 
     public function index(){

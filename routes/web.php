@@ -22,3 +22,7 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 Route::get('/home', [HomeController::class, 'showHomePage']);
 
 Route::get('/', [PostController::class, 'index'])->name('home');
+
+
+// for testing purpose
+Route::get('/test/{id}', [PostController::class, 'test']);
