@@ -4,13 +4,13 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <script src="https://cdn.tailwindcss.com"></script>
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 
 <body>
     <x-header />
     @yield('content')
+    <script src="https://cdn.tailwindcss.com"></script>
 </body>
 
 </html>

@@ -1,6 +1,5 @@
-<header>
+<header class="py-6">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
-    <script src="https://cdn.tailwindcss.com"></script>
 
     <!-- Left: Logo & Name -->
     <div class="website-name-container">
