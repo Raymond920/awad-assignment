@@ -30,7 +30,6 @@ class PostController extends Controller
         $validatedData = request()->validate([
             'title' => 'required|string|max:255',
             'content' => 'required|string',
-            'category_id' => 'required|exists:categories,id',
         ]);
 
         // Create a new post
