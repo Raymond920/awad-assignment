@@ -16,6 +16,7 @@ class PostController extends Controller
         return view('posts.index', compact('posts'));
     }
 
+
     public function show($id)
     {
         // Fetch a single post by its ID
@@ -37,5 +38,13 @@ class PostController extends Controller
 
         // Redirect to the posts index page with a success message
         return redirect()->route('posts.index')->with('success', 'Post created successfully!');
+    }
+
+    public function index(){
+        // fetch all posts from database
+        $posts = Post::all();
+
+        // pass the posts data to home view
+        return view('home', compact('posts'));
     }
 }
