@@ -25,4 +25,4 @@ Route::get('/', [PostController::class, 'index'])->name('home');
 
 
 // for testing purpose
-Route::get('/test/{id}', [PostController::class, 'test']);
+// Route::get('/test/{id}', [PostController::class, 'test']);

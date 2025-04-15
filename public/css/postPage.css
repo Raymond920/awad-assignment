@@ -22,7 +22,7 @@ html, body {
     top: 0;
     left: 0;
     z-index: -1;
-    animation: backdrop-scroll 1000s infinite linear;
+    animation: backdrop-scroll 50s infinite linear;
 }
 
 @keyframes backdrop-scroll {
@@ -49,7 +49,7 @@ html, body {
     padding: 20px;
 }
 
-.grid-column.posts-column {
+.grid-column.post-column {
     background-color: rgba(255, 255, 255, 0);
 }
 

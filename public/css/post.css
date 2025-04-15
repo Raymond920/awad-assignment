@@ -16,6 +16,7 @@ html, body {
     display: flex;
     flex-direction: row;
     gap: 30px;
+    height: 100%;
     max-width: 90%;
     margin-left: auto;
     margin-right: auto;
@@ -47,7 +48,10 @@ html, body {
     justify-content: center;
     align-items: center;
     height: 65vh;
-    width: 30%;
+    width: 45vh;
+    min-width: 45vh;
+    max-width: 45vh;
+    /* width: 30%; */
     border-width: 7px;
     border-style: solid;
     border-color: rgba(50,50,50,255);

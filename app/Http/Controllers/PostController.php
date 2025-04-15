@@ -12,13 +12,6 @@ class PostController extends Controller
         return view('showPost', compact('post')); 
     }
 
-    // this method is just for testing can delete later
-    public function test($id)
-    {
-        $post = Post::find($id);  // Retrieve the post by its ID
-        return view('testing', compact('post')); 
-    }
-
     public function index(){
         // fetch all posts from database
         $posts = Post::all();

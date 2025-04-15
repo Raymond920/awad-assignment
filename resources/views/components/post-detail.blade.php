@@ -16,8 +16,9 @@
             <hr>
             <br>
         </div>
+        {{-- Remember to remove lorem ipsum to put comment section --}}
         <div class="comments-container">
-            comment section
+            comment section 
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim, libero et pretium consectetur,
             erat eros accumsan arcu, ac laoreet tortor leo in nibh. Sed vel lorem placerat elit euismod rutrum at non
             neque. Praesent laoreet accumsan erat, et interdum ante tempor eu. Aliquam tincidunt bibendum scelerisque.
