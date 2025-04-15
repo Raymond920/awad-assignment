@@ -15,8 +15,8 @@ class ExcelDataSeeder extends Seeder
     public function run(): void
     {
         DB::table('posts')->truncate(); // Clears all records in the 'posts' table
-        
-        $filePath = storage_path('app/postsData.xlsx');
+
+        $filePath = database_path('data/postsData.xlsx');
 
         Excel::import(new ExcelDataImport, $filePath);
 
