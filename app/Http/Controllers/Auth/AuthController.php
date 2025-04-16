@@ -28,20 +28,28 @@ class AuthController extends Controller
         return redirect('/');
     }
 
-    public function login(Request $request) {
-        $validated = $request->validate([
+    public function login(Request $request)
+    {
+        $request->validate([
             'username' => 'required|string',
             'password' => 'required|string',
+            'remember_me' => 'boolean',
         ]);
 
-        if(Auth::attempt($validated)){
-            $request->session()->regenerate(); // Prevent session fixation attacks
-            return redirect()->intended('/');
+        $credentials = $request->only(['username', 'password']);
+        $remember_me = $request->input('remember_me', false);
+
+        if (! Auth::attempt($credentials, $remember_me)) {
+            throw ValidationException::withMessages([
+                'credentials' => 'The provided credentials do not match our records.',
+            ]);
         }
 
-        throw ValidationException::withMessages([
-            'credentials' => 'The provided credentials do not match our records.',
-        ]);
+        $request->session()->regenerate(); // Prevent session fixation attacks
+
+        if (Auth::user()->role == 'admin')
+            return redirect()->intended('/admin/dashboard');
+        return redirect()->intended('/');
     }
 
     public function logout(Request $request)

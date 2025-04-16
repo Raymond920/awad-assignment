@@ -57,7 +57,11 @@ This project is an online discussion forum built with Laravel, inspired by Reddi
 
 6. **Run database migrations**
    ```
-   php artisan migrate # or php artisan migrate:fresh for fresh database
+   php artisan migrate
+   ```
+   or for fresh database with sample data (resets the database)
+   ```
+   php artisan migrate:fresh --seed
    ```
 
 7. **Start the development server**

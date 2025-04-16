@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -16,7 +17,7 @@ class PostController extends Controller
         // fetch all posts from database
         $posts = Post::all();
 
-        // pass the posts data to home view
-        return view('home', compact('posts'));
+        // Redirect to the posts index page with a success message
+        return redirect()->route('posts.index')->with('success', 'Post created successfully!');
     }
 }

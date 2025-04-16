@@ -12,4 +12,3 @@
         <p>{{ Str::limit($post->content, 100) }}</p>
     </a>
 </div>
-

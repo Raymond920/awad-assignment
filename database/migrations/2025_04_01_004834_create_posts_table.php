@@ -13,16 +13,10 @@ return new class extends Migration
     {
         Schema::create('posts', function (Blueprint $table) {
             $table->id();
-            $table->string(column: 'img_file');
             $table->string('title');
             $table->text('content');
-            $table->string(column: 'author_name');
-            $table->foreignId('user_id')->constrained()->onDelete('cascade');
-            // $table->foreignId('category_id')->constrained()->onDelete('cascade');
-            $table->integer('likes_count')->default(0);
-            $table->integer('dislikes_count')->default(0);
-            $table->integer('comments_count')->default(0);
-            $table->timestamps();
+            $table->string('image_url');
+            $table->string('author');
         });
     }
 
