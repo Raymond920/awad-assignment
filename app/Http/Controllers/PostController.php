@@ -36,4 +36,53 @@ class PostController extends Controller
         // Redirect to the posts index page with a success message
         return redirect()->route('posts.index')->with('success', 'Post created successfully!');
     }
+
+    public function update($id)
+    {
+        // Validate the request data
+        $validatedData = request()->validate([
+            'title' => 'required|string|max:255',
+            'content' => 'required|string',
+        ]);
+
+        // Find the post by ID and update it
+        $post = Post::findOrFail($id);
+        $post->update($validatedData);
+
+        // Redirect to the posts index page with a success message
+        return redirect()->route('posts.index')->with('success', 'Post updated successfully!');
+    }
+    public function destroy($id)
+    {
+        // Find the post by ID and delete it
+        $post = Post::findOrFail($id);
+        $post->delete();
+
+        // Redirect to the posts index page with a success message
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully!');
+    }
+    public function addComment($postId)
+    {
+        // Validate the request data
+        $validatedData = request()->validate([
+            'comment' => 'required|string|max:255',
+        ]);
+
+        // Find the post by ID and add a comment
+        $post = Post::findOrFail($postId);
+        $post->comments()->create($validatedData);
+
+        // Redirect to the post page with a success message
+        return redirect()->route('posts.show', $postId)->with('success', 'Comment added successfully!');
+    }
+    public function deleteComment($postId, $commentId)
+    {
+        // Find the post by ID and delete the comment
+        $post = Post::findOrFail($postId);
+        $comment = $post->comments()->findOrFail($commentId);
+        $comment->delete();
+
+        // Redirect to the post page with a success message
+        return redirect()->route('posts.show', $postId)->with('success', 'Comment deleted successfully!');
+    }
 }
