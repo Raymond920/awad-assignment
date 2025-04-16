@@ -41,7 +41,7 @@ html, body {
     /* grid-template-columns: auto 4fr 2fr; */
     grid-template-columns: auto 4fr;
     gap: 20px;
-    min-height: calc(100vh - 7vh); /* Force scrolling for demo */
+    min-height: calc(100vh - 9.9vh); 
 }
 
 .grid-column {
@@ -63,4 +63,5 @@ html, body {
 .post-column {
     display: flex;
     align-items: center;
+    padding: 0;
 }
