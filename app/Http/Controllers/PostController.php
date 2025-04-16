@@ -7,23 +7,19 @@ use App\Models\Post;
 
 class PostController extends Controller
 {
+    public function show($id)
+    {
+        $post = Post::find($id);  // Retrieve the post by its ID
+        return view('posts.show', compact('post'));
+    }
+
     public function index()
     {
-        // Fetch all posts from the database
+        // fetch all posts from database
         $posts = Post::all();
 
         // Return the view with the posts data
-        return view('posts.index', compact('posts'));
-    }
-
-
-    public function show($id)
-    {
-        // Fetch a single post by its ID
-        $post = Post::findOrFail($id);
-
-        // Return the view with the post data
-        return view('posts.show', compact('post'));
+        return view('home', compact('posts'));
     }
 
     public function store()
