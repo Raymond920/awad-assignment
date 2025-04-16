@@ -5,7 +5,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{ asset('css/home.css') }}">
-    {{-- <link rel="stylesheet" href="{{ asset('css/background.css') }}"> --}}
     <title>Home</title>
 </head>
 
@@ -18,9 +17,8 @@
             </div>
             <div class="grid-column posts-column">
                 <div class="post-cards-container">
-                    {{-- retrieve and display each post from posts table --}}
-                    @foreach($posts as $post)
-                        <x-post-card :post="$post" />
+                    @foreach(App\Models\Post::all() as $post)
+                    <x-post-card :post="$post" />
                     @endforeach
                 </div>
             </div>

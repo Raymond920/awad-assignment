@@ -3,12 +3,12 @@
 <div class="post-container">
     <div class="post-bg"></div>
     <div class="post-image-container">
-        <img src="{{ asset('images/posts_image/' . $post->id . '.png') }}"
+        <img src="{{ asset('images/posts_image/' . $post->image_url) }}"
             onerror="this.src='{{ asset('images/posts_image/default.png') }}';" alt="Post Image" class="post-image" />
     </div>
     <div class="content-comments-container">
         <div class="content-container">
-            <h2>{{ $post->author }}</h2>
+            <h2>{{ $post->user->username }}</h2>
             <h2>{{ $post->title }}</h2>
             <br>
             <p>{{ $post->content }}</p>
@@ -18,7 +18,7 @@
         </div>
         {{-- Remember to remove lorem ipsum to put comment section --}}
         <div class="comments-container">
-            comment section 
+            comment section
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim, libero et pretium consectetur,
             erat eros accumsan arcu, ac laoreet tortor leo in nibh. Sed vel lorem placerat elit euismod rutrum at non
             neque. Praesent laoreet accumsan erat, et interdum ante tempor eu. Aliquam tincidunt bibendum scelerisque.

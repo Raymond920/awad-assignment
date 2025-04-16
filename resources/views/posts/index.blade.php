@@ -24,7 +24,7 @@
                         @foreach($posts as $post)
                         <div class="bg-white p-4 rounded-lg shadow mb-4 hover:shadow-md transition-shadow duration-200">
                             <div class="flex items-center mb-2">
-                                <img src="{{ asset('images/posts_image/' . $post->id . '.png') }}"
+                                <img src="{{ asset('images/posts_image/' . $post->image_url) }}"
                                     onerror="this.src='{{ asset('images/posts_image/default.png') }}';" alt="Post Image"
                                     class="w-16 h-16 object-cover rounded-lg mr-4">
                                 <div>
@@ -35,7 +35,7 @@
                                         </a>
                                     </h2>
                                     <div class="text-sm text-gray-500">
-                                        <span>Posted by: {{ $post->author }}</span>
+                                        <span>Posted by: {{ $post->user->username }}</span>
                                         @if($post->created_at)
                                         <span class="mx-1">•</span>
                                         <span>{{ $post->created_at->diffForHumans() }}</span>
