@@ -84,7 +84,7 @@
                         </div>
                         <div class="ml-4">
                             <h3 class="text-gray-500 text-sm font-medium">Comments</h3>
-                            <p class="text-2xl font-semibold text-gray-800">N/A</p>
+                            <p class="text-2xl font-semibold text-gray-800">{{ \App\Models\Comment::count() }}</p>
                         </div>
                     </div>
                 </div>
@@ -117,7 +117,8 @@
                                     <td class="px-6 py-4 whitespace-nowrap">{{ $post->user->username }}</td>
                                     <td class="px-6 py-4 whitespace-nowrap">Created a new post: "{{
                                         Str::limit($post->title, 30) }}"</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">{{ \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
+                                    <td class="px-6 py-4 whitespace-nowrap">{{
+                                        \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
                                     </td>
                                 </tr>
                                 @empty

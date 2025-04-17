@@ -7,7 +7,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 </head>
 
-<body>
+<body class="antialiased bg-slate-900">
     <x-header />
     @yield('content')
     <script src="https://cdn.tailwindcss.com"></script>

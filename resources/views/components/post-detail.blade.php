@@ -8,55 +8,127 @@
     </div>
     <div class="content-comments-container">
         <div class="content-container">
-            <h2>{{ $post->user->username }}</h2>
+            <div class="flex justify-between items-center mb-2">
+                <h2>{{ $post->user->username }}</h2>
+                @auth
+                @if(Auth::id() == $post->user_id)
+                <div class="flex gap-2">
+                    <button onclick="togglePostEditForm()"
+                        class="px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Edit
+                        Post</button>
+
+                    <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit"
+                            class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">Delete
+                            Post</button>
+                    </form>
+                </div>
+                @endif
+                @endauth
+            </div>
             <h2>{{ $post->title }}</h2>
             <br>
             <p>{{ $post->content }}</p>
+
+            <!-- Edit Post Form (Hidden by default) -->
+            <div id="edit-post-form" class="mt-3 hidden">
+                <form action="{{ route('posts.update', $post->id) }}" method="POST">
+                    @csrf
+                    @method('PUT')
+                    <textarea name="content" rows="5"
+                        class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">{{ $post->content }}</textarea>
+                    <div class="flex justify-end gap-2 mt-2">
+                        <button type="button" onclick="togglePostEditForm()"
+                            class="px-3 py-1 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition">Cancel</button>
+                        <button type="submit"
+                            class="px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Update</button>
+                    </div>
+                </form>
+            </div>
+
             <br>
             <hr>
             <br>
         </div>
-        {{-- Remember to remove lorem ipsum to put comment section --}}
-        <div class="comments-container">
-            comment section
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin dignissim, libero et pretium consectetur,
-            erat eros accumsan arcu, ac laoreet tortor leo in nibh. Sed vel lorem placerat elit euismod rutrum at non
-            neque. Praesent laoreet accumsan erat, et interdum ante tempor eu. Aliquam tincidunt bibendum scelerisque.
-            Donec porttitor odio sed ante pulvinar, nec finibus ex lobortis. Sed eget nulla lacinia, scelerisque leo
-            vel, dignissim purus. Nunc dapibus luctus nulla, eu pharetra nunc eleifend ac. Pellentesque lacinia rhoncus
-            accumsan. Donec finibus eget tellus et placerat. Ut ex eros, pretium sit amet dui a, porttitor hendrerit
-            ligula. Morbi feugiat gravida enim, id viverra mauris vehicula ut. Etiam vitae enim euismod, fringilla risus
-            nec, bibendum libero. Donec mattis ligula pharetra erat cursus finibus.
 
-            Aliquam tempor nunc diam. Sed orci sapien, molestie quis pharetra rhoncus, feugiat id nisi. Ut a neque sed
-            arcu mollis pharetra at a tellus. Mauris rhoncus consequat enim in auctor. Sed egestas scelerisque pulvinar.
-            Nulla ut dictum nisl, tincidunt sodales enim. Sed lacus quam, mattis nec odio vitae, dignissim tristique
-            augue. Nam facilisis, metus ut efficitur venenatis, tellus sem tempor lorem, et pharetra leo ipsum et neque.
-            Fusce fermentum ante lacus, et porttitor quam lobortis eu. Duis pretium sed orci pharetra venenatis. Donec
-            tristique ornare augue, ac cursus urna dictum et.
+        {{-- Comment Form --}}
+        @auth
+        <div class="mb-6">
+            <h4 class="text-lg font-medium mb-2">Add a comment</h4>
+            <form action="{{ route('posts.comments.store', $post->id) }}" method="POST">
+                @csrf
+                <textarea name="content" rows="3"
+                    class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                    placeholder="Write your comment here..."></textarea>
+                <button type="submit"
+                    class="mt-2 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">
+                    Post Comment
+                </button>
+            </form>
+        </div>
+        @else
+        <div class="mt-6 p-4 bg-gray-50 rounded-lg text-center">
+            <p class="text-gray-600">Please <a href="{{ route('show.login') }}"
+                    class="text-blue-500 hover:underline">log in</a> to add a comment</p>
+        </div>
+        @endauth
 
-            Fusce molestie et enim et vestibulum. Sed quis lacus accumsan metus porta vulputate nec vitae ligula. Nunc
-            fermentum eros nec enim dapibus, non elementum augue molestie. Phasellus dapibus est nec justo viverra
-            mollis. Curabitur tempus quam purus, non dignissim velit rutrum non. Donec tempor sit amet purus sit amet
-            lobortis. Vestibulum et porttitor nulla. Aliquam leo orci, eleifend et nunc eget, maximus vulputate odio.
-            Aenean a augue id arcu feugiat egestas. Quisque gravida quis dolor vitae semper. Quisque quis tristique
-            velit. Quisque pretium quis elit in consequat. Aenean eget cursus neque, ac lobortis nibh. Nam et laoreet
-            metus. Donec aliquet elit at dignissim malesuada. Donec aliquet dui id ipsum auctor, a finibus lorem
-            fermentum.
+        {{-- Comments Section --}}
+        <div class="mt-8">
+            <h3 class="text-xl font-semibold mb-4">Comments</h3>
+            @foreach ($post->comments->sortByDesc('created_at') as $comment)
+            <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
+                <div class="flex justify-between items-center mb-2">
+                    <h3 class="font-medium text-blue-600">{{ $comment->user->username }}</h3>
+                    <p class="text-sm text-gray-500">{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}
+                    </p>
+                </div>
+                <p class="text-gray-700 mb-3">{{ $comment->content }}</p>
+                @auth
+                @if(Auth::id() == $comment->user_id)
+                <div class="flex gap-2 justify-end">
+                    <button onclick="toggleCommentEditForm({{ $comment->id }})"
+                        class="text-sm text-blue-500 hover:text-blue-700 transition">Edit</button>
+                    <form action="{{ route('comments.destroy', $comment->id) }}" method="POST" class="inline">
+                        @csrf
+                        @method('DELETE')
+                        <button type="submit" class="text-sm text-red-500 hover:text-red-700 transition">Delete</button>
+                    </form>
+                </div>
 
-            Nunc metus turpis, accumsan vitae interdum nec, molestie ac metus. Morbi maximus purus nunc, quis sagittis
-            metus tincidunt vel. Sed at lectus dapibus, lobortis dui in, vulputate erat. Suspendisse vel convallis diam.
-            Praesent eu finibus turpis. Mauris lacinia eget purus vitae pellentesque. Praesent dictum efficitur
-            tristique. Fusce vel sollicitudin sapien. Nunc magna dui, imperdiet ut turpis et, fringilla interdum felis.
-            Nunc pellentesque neque nec arcu pharetra iaculis.
-
-            Mauris facilisis vel eros sed eleifend. Nulla pulvinar blandit libero non luctus. Fusce sit amet egestas
-            eros, vel fringilla tortor. Sed non risus et elit ultrices pellentesque. Sed egestas ex nibh, vitae interdum
-            magna ullamcorper ultrices. Vestibulum vitae volutpat felis, sed dictum odio. Aliquam non efficitur eros,
-            non mollis sapien. Integer tincidunt vitae felis at viverra. Vivamus urna augue, ullamcorper sed suscipit
-            at, molestie vel odio. Etiam sit amet euismod neque. Sed ut luctus ligula. Quisque vitae nisl id lacus
-            bibendum cursus at convallis risus. Quisque luctus mauris mauris, non mollis metus tincidunt et. Nulla
-            consectetur interdum lacus suscipit cursus.
+                <!-- Edit Comment Form (Hidden by default) -->
+                <div id="edit-form-{{ $comment->id }}" class="mt-3 hidden">
+                    <form action="{{ route('comments.update', $comment->id) }}" method="POST">
+                        @csrf
+                        @method('PUT')
+                        <textarea name="content" rows="2"
+                            class="w-full px-3 py-2 text-gray-700 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500">{{ $comment->content }}</textarea>
+                        <div class="flex justify-end gap-2 mt-2">
+                            <button type="button" onclick="toggleCommentEditForm({{ $comment->id }})"
+                                class="px-3 py-1 bg-gray-300 text-gray-700 rounded-lg hover:bg-gray-400 transition">Cancel</button>
+                            <button type="submit"
+                                class="px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Update</button>
+                        </div>
+                    </form>
+                </div>
+                @endif
+                @endauth
+            </div>
+            @endforeach
         </div>
     </div>
 </div>
+
+<script>
+    function toggleCommentEditForm(commentId) {
+        const form = document.getElementById('edit-form-' + commentId);
+        form.classList.toggle('hidden');
+    }
+
+    function togglePostEditForm() {
+        const form = document.getElementById('edit-post-form');
+        form.classList.toggle('hidden');
+    }
+</script>

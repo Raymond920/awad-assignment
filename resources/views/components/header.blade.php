@@ -1,4 +1,4 @@
-<header class="py-6">
+<header class="py-6 h-16">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
 
     <a href="{{ route('home') }}" class="home-button">
