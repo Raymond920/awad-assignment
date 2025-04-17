@@ -10,15 +10,6 @@
                     class="block py-2.5 px-4 rounded transition duration-200 hover:bg-slate-700">
                     Dashboard
                 </a>
-                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 bg-blue-500 hover:bg-blue-600">
-                    Users
-                </a>
-                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-slate-700">
-                    Posts
-                </a>
-                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-slate-700">
-                    Comments
-                </a>
                 <a href="{{ route('home') }}"
                     class="block py-2.5 px-4 rounded transition duration-200 text-slate-300 hover:bg-slate-700 mt-8">
                     Back to Site

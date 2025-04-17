@@ -6,17 +6,9 @@
         <div class="w-full md:w-64 bg-slate-800 text-white p-6">
             <h2 class="text-xl font-semibold mb-6">Admin Dashboard</h2>
             <nav class="space-y-2">
-                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 bg-blue-500 hover:bg-blue-600">
-                    Dashboard
-                </a>
-                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-slate-700">
+                <a href="{{route('admin.users.index')}}"
+                    class="block py-2.5 px-4 rounded transition duration-200 hover:bg-slate-700">
                     Users
-                </a>
-                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-slate-700">
-                    Posts
-                </a>
-                <a href="#" class="block py-2.5 px-4 rounded transition duration-200 hover:bg-slate-700">
-                    Comments
                 </a>
                 <a href="{{ route('home') }}"
                     class="block py-2.5 px-4 rounded transition duration-200 text-slate-300 hover:bg-slate-700 mt-8">
@@ -92,7 +84,7 @@
                         </div>
                         <div class="ml-4">
                             <h3 class="text-gray-500 text-sm font-medium">Comments</h3>
-                            <p class="text-2xl font-semibold text-gray-800">N/A</p>
+                            <p class="text-2xl font-semibold text-gray-800">{{ \App\Models\Comment::count() }}</p>
                         </div>
                     </div>
                 </div>
@@ -120,23 +112,21 @@
                                 </tr>
                             </thead>
                             <tbody class="bg-white divide-y divide-gray-200">
+                                @forelse(\App\Models\Post::with('user')->latest()->take(5)->get() as $post)
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">JohnDoe</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">Created a new post "Getting Started with
-                                        Laravel"</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">2 hours ago</td>
-                                </tr>
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">JaneSmith</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">Commented on "Web Development Trends 2023"
+                                    <td class="px-6 py-4 whitespace-nowrap">{{ $post->user->username }}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">Created a new post: "{{
+                                        Str::limit($post->title, 30) }}"</td>
+                                    <td class="px-6 py-4 whitespace-nowrap">{{
+                                        \Carbon\Carbon::parse($post->created_at)->diffForHumans() }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">4 hours ago</td>
                                 </tr>
+                                @empty
                                 <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap">MikeJones</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">Registered a new account</td>
-                                    <td class="px-6 py-4 whitespace-nowrap">6 hours ago</td>
+                                    <td colspan="3" class="px-6 py-4 text-center text-gray-500">No recent post activity
+                                        found</td>
                                 </tr>
+                                @endforelse
                             </tbody>
                         </table>
                     </div>
