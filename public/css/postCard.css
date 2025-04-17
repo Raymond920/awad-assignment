@@ -25,6 +25,7 @@
     flex-direction: column;
     gap: 10px;
     flex-shrink: 0;
+    overflow: clip;
 }
 
 .post-card h2, small, p {
@@ -34,8 +35,6 @@
 .post-card-image {
     width: 100%;
     height: auto;
-    border-top-right-radius: 30px;
-    border-top-left-radius: 30px;
 }
 
 .post-card small {
