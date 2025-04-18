@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Post;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -18,6 +19,7 @@ class CommentController extends Controller
             'content' => 'required|string|max:1000',
         ]);
 
+        Gate::authorize('create', Comment::class);
         Comment::create([
             'content' => $request['content'],
             'user_id' => Auth::id(),
@@ -32,16 +34,13 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment)
     {
-        // Check if the authenticated user is the owner of the comment
-        if (Auth::id() !== $comment->user_id) {
-            return redirect()->back()->with('error', 'You are not authorized to update this comment.');
-        }
-
         $request->validate([
             'content' => 'required|string|max:1000',
         ]);
 
         $comment->content = $request->content;
+
+        Gate::authorize('update', $comment);
         $comment->save();
 
         return redirect()->back()->with('success', 'Comment updated successfully!');
@@ -52,11 +51,9 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        if (Auth::id() !== $comment->user_id) {
-            return redirect()->back()->with('error', 'You are not authorized to delete this comment');
-        }
-
+        Gate::authorize('delete', $comment);
         $comment->delete();
+
         return redirect()->back()->with('success', 'Comment deleted successfully');
     }
 }
