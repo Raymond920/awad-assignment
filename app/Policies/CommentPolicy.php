@@ -2,10 +2,11 @@
 
 namespace App\Policies;
 
-use App\Models\Post;
+use App\Models\Comment;
 use App\Models\User;
+use Illuminate\Auth\Access\Response;
 
-class PostPolicy
+class CommentPolicy
 {
     /**
      * Allow admin to perform all actions.
@@ -22,7 +23,7 @@ class PostPolicy
     /**
      * Determine whether the user can view any models.
      */
-    public function viewAny(?User $user = null): bool
+    public function viewAny(?User $user): bool
     {
         return true;
     }
@@ -30,7 +31,7 @@ class PostPolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(?User $user = null, Post $post): bool
+    public function view(?User $user, Comment $comment): bool
     {
         return true;
     }
@@ -46,16 +47,16 @@ class PostPolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Post $post): bool
+    public function update(User $user, Comment $comment): bool
     {
-        return $post->user_id === $user->id;
+        return $comment->user_id === $user->id;
     }
 
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Post $post): bool
+    public function delete(User $user, Comment $comment): bool
     {
-        return $post->user_id === $user->id;
+        return $comment->user_id === $user->id;
     }
 }
