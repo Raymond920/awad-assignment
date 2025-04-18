@@ -10,13 +10,14 @@
         <div class="content-container">
             <div class="flex justify-between items-center mb-2">
                 <h2>{{ $post->user->username }}</h2>
-                @auth
-                @if(Auth::id() == $post->user_id)
+
                 <div class="flex gap-2">
+                    @can('update', $post)
                     <button onclick="togglePostEditForm()"
                         class="px-3 py-1 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition">Edit
                         Post</button>
-
+                    @endcan
+                    @can('delete', $post)
                     <form action="{{ route('posts.destroy', $post->id) }}" method="POST" class="inline">
                         @csrf
                         @method('DELETE')
@@ -24,15 +25,15 @@
                             class="px-3 py-1 bg-red-500 text-white rounded-lg hover:bg-red-600 transition">Delete
                             Post</button>
                     </form>
+                    @endcan
                 </div>
-                @endif
-                @endauth
             </div>
             <h2>{{ $post->title }}</h2>
             <br>
             <p>{{ $post->content }}</p>
 
             <!-- Edit Post Form (Hidden by default) -->
+            @can('update', $post)
             <div id="edit-post-form" class="mt-3 hidden">
                 <form action="{{ route('posts.update', $post->id) }}" method="POST">
                     @csrf
@@ -47,14 +48,14 @@
                     </div>
                 </form>
             </div>
-
+            @endcan
             <br>
             <hr>
             <br>
         </div>
 
         {{-- Comment Form --}}
-        @auth
+        @can('create', App\Models\Comment::class)
         <div class="mb-6">
             <h4 class="text-lg font-medium mb-2">Add a comment</h4>
             <form action="{{ route('posts.comments.store', $post->id) }}" method="POST">
@@ -73,7 +74,7 @@
             <p class="text-gray-600">Please <a href="{{ route('show.login') }}"
                     class="text-blue-500 hover:underline">log in</a> to add a comment</p>
         </div>
-        @endauth
+        @endcan
 
         {{-- Comments Section --}}
         <div class="mt-8">
@@ -86,8 +87,8 @@
                     </p>
                 </div>
                 <p class="text-gray-700 mb-3">{{ $comment->content }}</p>
-                @auth
-                @if(Auth::id() == $comment->user_id)
+
+                @can('delete', $comment)
                 <div class="flex gap-2 justify-end">
                     <button onclick="toggleCommentEditForm({{ $comment->id }})"
                         class="text-sm text-blue-500 hover:text-blue-700 transition">Edit</button>
@@ -97,7 +98,9 @@
                         <button type="submit" class="text-sm text-red-500 hover:text-red-700 transition">Delete</button>
                     </form>
                 </div>
+                @endcan
 
+                @can('update', $comment)
                 <!-- Edit Comment Form (Hidden by default) -->
                 <div id="edit-form-{{ $comment->id }}" class="mt-3 hidden">
                     <form action="{{ route('comments.update', $comment->id) }}" method="POST">
@@ -113,8 +116,7 @@
                         </div>
                     </form>
                 </div>
-                @endif
-                @endauth
+                @endcan
             </div>
             @endforeach
         </div>
