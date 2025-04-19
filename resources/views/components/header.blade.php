@@ -1,4 +1,4 @@
-<header class="py-6 h-16">
+<header class="py-6 h-16 fixed top-0 left-0 right-0 z-50">
     <link rel="stylesheet" href="{{ asset('css/header.css') }}">
 
     <a href="{{ route('home') }}" class="home-button">
@@ -20,7 +20,8 @@
     @auth
     @can('is-admin')
     <a href="{{ route('admin.dashboard') }}">
-        <button class="bg-green-600 rounded-full text-sm px-3 py-1 hover:bg-green-700 font-bold whitespace-nowrap mr-2">Admin
+        <button
+            class="bg-green-600 rounded-full text-sm px-3 py-1 hover:bg-green-700 font-bold whitespace-nowrap mr-2">Admin
             Dashboard</button>
     </a>
     @endcan

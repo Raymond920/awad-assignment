@@ -68,6 +68,6 @@ class PostController extends Controller
         $post->delete();
 
         // Redirect to the posts index page with a success message
-        return redirect()->route('posts.index');
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully!');
     }
 }
