@@ -7,95 +7,175 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-# AWAD Assignment - Online Forum Application
+# InterKnot Online Forum
 
 ## Project Overview
-This project is an online discussion forum built with Laravel, inspired by Reddit. Users can create accounts, post content, comment on discussions, and participate in topic-based communities.
+This project is a feature-rich online discussion forum built with Laravel, drawing inspiration from modern social platforms like Reddit. It serves as a community space where users can create accounts, share posts, engage in discussions through comments, and participate in specialized topic-based communities.
 
 ## Features
-- User authentication and account management
-- Discussion threads with a commenting system
-- Community-based topic organization
-- Minimalist and responsive UI design
+- **User Management**
+  - Registration and authentication system
+  - User profiles with customization options
+  - Account settings and preferences
 
-## Technologies
-- **Backend**: Laravel PHP framework
-- **Frontend**: Laravel Blade, Tailwind CSS
+- **Content Management**
+  - Create, edit, and delete posts
+  - Rich text formatting for discussions
+  - Image uploads and embedding
+  - Sorting and filtering options
+
+- **Community Engagement**
+  - Threaded commenting system
+  - Topic-based communities
+  - Content rating and popularity metrics
+  - Activity feed and notifications
+
+- **UI/UX**
+  - Responsive design for all device types
+  - Dark/light mode themes
+  - Intuitive navigation system
+  - Accessibility-focused interface
+
+## Technologies Used
+
+### Backend
+- **Laravel 12** - PHP framework providing the application foundation
+- **MySQL** - Relational database for data storage
+- **Eloquent ORM** - Database interaction layer
+- **Laravel Sanctum** - API token authentication
+
+### Frontend
+- **Blade Templates** - Laravel's templating engine
+- **Tailwind CSS** - Utility-first CSS framework
+- **Custom CSS** - Specialized styling with animations
 
 ## Setup Instructions
 
 ### Prerequisites
-- WampServer
+- PHP 8.1 or higher
 - Composer
+- WampServer, XAMPP, or similar local development environment
+- Node.js and NPM (for frontend assets)
+- Git
 
 ### Installation Steps
 
-1. Start WampServer
+1. **Start your local server environment**
+   - Launch WampServer or equivalent
 
 2. **Clone the repository**
-   ```
+   ```bash
    git clone https://github.com/Raymond920/awad-assignment.git
    cd awad-assignment
    ```
 
-3. **Install dependencies**
-   ```
+3. **Install PHP dependencies**
+   ```bash
    composer install
    ```
 
-4. **Configure environment**
-   Copy .env.example to .env, keep the configuration and credentials
-   ```
-   cp .env.example .env
+4. **Install Frontend dependencies**
+   ```bash
+   npm install
+   npm run dev
    ```
 
-5. **Generate application key**
-    For CSRF
+5. **Configure environment**
+   ```bash
+   cp .env.example .env
    ```
+   
+   Then edit the `.env` file with your database credentials and other configuration settings.
+
+6. **Generate application key**
+   ```bash
    php artisan key:generate
    ```
 
-6. **Run database migrations**
-   ```
+7. **Run database migrations**
+   ```bash
    php artisan migrate
    ```
-   or for fresh database with sample data (resets the database)
-   ```
+   
+   For a fresh database with sample data:
+   ```bash
    php artisan migrate:fresh --seed
    ```
 
-7. **Start the development server**
+8. **Create storage link for public assets**
+   ```bash
+   php artisan storage:link
    ```
+
+9. **Start the development server**
+   ```bash
    php artisan serve
    ```
 
-8. **Access the application**
-   ```
-   Visit http://localhost:8000 in your browser
-   ```
+10. **Access the application**
+    - Visit `http://localhost:8000` in your browser
 
-## Development
+## Development Guide
 
-### Database Seeding
-To populate your database with test data:
+### Environment Setup
+- Configure `.env` file with appropriate settings
+- Use `php artisan config:cache` after making configuration changes
+
+### Database Management
+- Create migrations: `php artisan make:migration create_your_table_name`
+- Create models: `php artisan make:model ModelName`
+- Run specific seeders: `php artisan db:seed --class=UserSeeder`
+
+### Controller Development
+- Create controllers: `php artisan make:controller ControllerName`
+- Create resource controllers: `php artisan make:controller PostController --resource`
+
+### Testing
+- Run tests: `php artisan test`
+- Create test: `php artisan make:test FeatureNameTest`
+
+### Common Commands
+- Clear cache: `php artisan cache:clear`
+- Clear config: `php artisan config:clear`
+- List routes: `php artisan route:list`
+
+## Project Structure
+
 ```
-php artisan db:seed
+app/
+├── Console/          # Custom commands
+├── Http/             # Controllers, Middleware, Requests
+├── Models/           # Eloquent models
+├── Providers/        # Service providers
+database/
+├── factories/        # Model factories for testing/seeding
+├── migrations/       # Database migrations
+├── seeders/          # Database seeders
+public/               # Publicly accessible files
+├── css/              # Compiled CSS
+├── js/               # Compiled JavaScript
+├── images/           # Public images
+resources/
+├── css/              # CSS source files
+├── js/               # JavaScript source files
+├── views/            # Blade templates
+routes/               # Application routes
+tests/                # Automated tests
 ```
-
-### Working with Models
-The application uses Eloquent ORM for database interactions:
-- `User` model for authentication and user management
-
-### Adding New Features
-1. Create migrations for database changes.
-2. Add routes in `routes/web.php`.
-3. Create controllers in `app/Http/Controllers`.
-4. Implement view templates in `resources/views`.
 
 ## Contributing
-1. Create a feature branch from `main`.
-2. Implement your changes.
-3. Submit a pull request for merge.
+
+1. Fork the repository
+2. Create your feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add some amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
+5. Submit a pull request
 
 ## License
-This project is academic coursework for Advanced Web Application Development.
+
+This project is academic coursework for Advanced Web Application Development module.
+
+## Acknowledgments
+
+- Laravel Team for the amazing framework
+- All open-source contributors whose libraries make this project possible
