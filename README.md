@@ -35,6 +35,9 @@ This project is a feature-rich online discussion forum built with Laravel, drawi
   - Intuitive navigation system
   - Accessibility-focused interface
 
+## Database ERD Diagram
+![image](https://github.com/user-attachments/assets/19e7a5ac-0ffa-4892-98a5-620db056dfcb)
+
 ## Technologies Used
 
 ### Backend
