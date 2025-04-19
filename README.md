@@ -1,5 +1,8 @@
 ![image](https://github.com/user-attachments/assets/2a355538-c62b-4e0c-b1ae-055f3acae4b8)
 
+> [!NOTE]
+> This project is academic coursework for UECS3294 Advanced Web Application Development module.
+
 # InterKnot Forum
 ![image](https://github.com/user-attachments/assets/8bba53de-efca-4fbc-922f-67ca97178f71)
 
