@@ -3,8 +3,9 @@
 <div class="post-container">
     <div class="post-bg"></div>
     <div class="post-image-container">
-        <img src="{{ asset('storage/images/posts_image/' . $post->image_url) }}"
-            onerror="this.src='{{ asset('storage/images/posts_image/default.png') }}';" alt="Post Image" class="post-image" />
+        <img src="{{ asset('storage/' . $post->image_url) }}"
+            onerror="this.src='{{ asset('storage/images/posts_image/default.png') }}';" alt="Post Image"
+            class="post-image" />
     </div>
     <div class="content-comments-container">
         <div class="content-container">

@@ -2,7 +2,7 @@
 
 <div class="post-card">
     <a href="/posts/{{ $post->id }}">
-        <img src="{{ asset('storage/images/posts_image/' . $post->image_url) }}"
+        <img src="{{ asset('storage/' . $post->image_url) }}"
             onerror="this.src='{{ asset('storage/images/posts_image/default.png') }}';" alt="Post Image"
             class="post-card-image" />
         <div class="p-2">

@@ -9,7 +9,7 @@
         </div>
         <div class="grid-column posts-column">
             <div class="post-cards-container">
-                @foreach(App\Models\Post::orderBy('updated_at', 'desc')->get() as $post)
+                @foreach(App\Models\Post::orderBy('created_at', 'asc')->get() as $post)
                 <x-post-card :post="$post" />
                 @endforeach
             </div>
