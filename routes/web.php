@@ -7,6 +7,7 @@ use App\Http\Controllers\CommentController;
 
 // Home routes
 Route::get('/', [PostController::class, 'index'])->name('home');
+Route::view('/about', 'about')->name('about');
 Route::view('/register', 'auth.register')->name('show.register');
 Route::view('/login', 'auth.login')->name('show.login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
