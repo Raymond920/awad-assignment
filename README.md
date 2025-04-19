@@ -1,16 +1,12 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+![image](https://github.com/user-attachments/assets/2a355538-c62b-4e0c-b1ae-055f3acae4b8)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
-
-# InterKnot Online Forum
+# InterKnot Forum
+![image](https://github.com/user-attachments/assets/8bba53de-efca-4fbc-922f-67ca97178f71)
 
 ## Project Overview
 This project is a feature-rich online discussion forum built with Laravel, drawing inspiration from modern social platforms like Reddit. It serves as a community space where users can create accounts, share posts, engage in discussions through comments, and participate in specialized topic-based communities.
+
+![image](https://github.com/user-attachments/assets/02378de1-5af3-4b64-904a-97bd687152eb)
 
 ## Features
 - **User Management**
