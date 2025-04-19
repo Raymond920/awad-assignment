@@ -4,9 +4,11 @@
     <button class="close-btn" id="close-btn" onclick="collapseSidebar()">✖</button>
     <button class="expand-btn" id="expand-btn" onclick="expandSidebar()" style="display: none">☰</button>
     <a href="#">About</a>
-    <a href="#">Services</a>
-    <a href="#">Clients</a>
-    <a href="#">Contact</a>
+    @can('create', App\Models\Post::class)
+    <a href="{{ route('posts.create') }}">Create Post</a>
+    @else
+
+    @endcan
 </div>
 
 <script>

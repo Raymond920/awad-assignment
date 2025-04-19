@@ -14,8 +14,6 @@ class PostSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('posts')->truncate(); // Clears all records in the 'posts' table
-
         // Get all user IDs to randomly assign to posts
         $userIds = User::pluck('id')->toArray();
 

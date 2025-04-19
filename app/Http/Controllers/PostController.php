@@ -8,20 +8,23 @@ use Illuminate\Support\Facades\Gate;
 
 class PostController extends Controller
 {
+    public function index()
+    {
+        Gate::authorize('viewAny', Post::class);
+        return view('home');
+    }
+
     public function show($id)
     {
         $post = Post::find($id);
         Gate::authorize('view', $post);
-
         return view('posts.show', compact('post'));
     }
 
-    public function index()
+    public function create()
     {
-        $posts = Post::all();
-        Gate::authorize('view', Post::class);
-
-        return view('home', compact('posts'));
+        Gate::authorize('create', Post::class);
+        return view('posts.create');
     }
 
     public function store()

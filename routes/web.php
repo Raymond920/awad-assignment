@@ -6,7 +6,7 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\CommentController;
 
 // Home routes
-Route::view('/', 'home')->name('home');
+Route::get('/', [PostController::class, 'index'])->name('home');
 Route::view('/register', 'auth.register')->name('show.register');
 Route::view('/login', 'auth.login')->name('show.login');
 Route::post('/register', [AuthController::class, 'register'])->name('register');
@@ -20,6 +20,7 @@ Route::prefix('posts')->group(function () {
 });
 
 Route::middleware('auth')->prefix('posts')->group(function () {
+    Route::get('/create', [PostController::class, 'create'])->name('posts.create');
     Route::post('/', [PostController::class, 'store'])->name('posts.store');
     Route::put('/{id}', [PostController::class, 'update'])->name('posts.update');
     Route::delete('/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
