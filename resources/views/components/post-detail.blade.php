@@ -3,8 +3,8 @@
 <div class="post-container">
     <div class="post-bg"></div>
     <div class="post-image-container">
-        <img src="{{ asset('images/posts_image/' . $post->image_url) }}"
-            onerror="this.src='{{ asset('images/posts_image/default.png') }}';" alt="Post Image" class="post-image" />
+        <img src="{{ asset('storage/images/posts_image/' . $post->image_url) }}"
+            onerror="this.src='{{ asset('storage/images/posts_image/default.png') }}';" alt="Post Image" class="post-image" />
     </div>
     <div class="content-comments-container">
         <div class="content-container">
@@ -79,11 +79,11 @@
         {{-- Comments Section --}}
         <div class="mt-8">
             <h3 class="text-xl font-semibold mb-4">Comments</h3>
-            @foreach ($post->comments->sortByDesc('created_at') as $comment)
+            @foreach ($post->comments->sortByDesc('updated_at') as $comment)
             <div class="bg-white p-4 rounded-lg shadow-sm mb-4">
                 <div class="flex justify-between items-center mb-2">
                     <h3 class="font-medium text-blue-600">{{ $comment->user->username }}</h3>
-                    <p class="text-sm text-gray-500">{{ \Carbon\Carbon::parse($comment->created_at)->diffForHumans() }}
+                    <p class="text-sm text-gray-500">{{ \Carbon\Carbon::parse($comment->updated_at)->diffForHumans() }}
                     </p>
                 </div>
                 <p class="text-gray-700 mb-3">{{ $comment->content }}</p>

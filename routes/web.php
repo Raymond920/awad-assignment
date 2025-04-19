@@ -16,14 +16,16 @@ Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 // Post routes
 Route::prefix('posts')->group(function () {
     Route::get('/', [PostController::class, 'index'])->name('posts.index');
-    Route::get('/{id}', [PostController::class, 'show'])->name('posts.show');
-});
 
-Route::middleware('auth')->prefix('posts')->group(function () {
-    Route::get('/create', [PostController::class, 'create'])->name('posts.create');
-    Route::post('/', [PostController::class, 'store'])->name('posts.store');
-    Route::put('/{id}', [PostController::class, 'update'])->name('posts.update');
-    Route::delete('/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+    Route::middleware('auth')->group(function () {
+        Route::get('/create', [PostController::class, 'create'])->name('posts.create');
+        Route::post('/', [PostController::class, 'store'])->name('posts.store');
+        Route::put('/{id}', [PostController::class, 'update'])->name('posts.update');
+        Route::delete('/{id}', [PostController::class, 'destroy'])->name('posts.destroy');
+    });
+
+    // Wildcard route should always be last to prevent it from capturing specific routes
+    Route::get('/{id}', [PostController::class, 'show'])->name('posts.show');
 });
 
 // Comment routes

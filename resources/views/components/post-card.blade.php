@@ -2,8 +2,8 @@
 
 <div class="post-card">
     <a href="/posts/{{ $post->id }}">
-        <img src="{{ asset('images/posts_image/' . $post->image_url) }}"
-            onerror="this.src='{{ asset('images/posts_image/default.png') }}';" alt="Post Image"
+        <img src="{{ asset('storage/images/posts_image/' . $post->image_url) }}"
+            onerror="this.src='{{ asset('storage/images/posts_image/default.png') }}';" alt="Post Image"
             class="post-card-image" />
         <div class="p-2">
             <small>By {{ $post->user->username }}</small>
