@@ -20,7 +20,7 @@
                 @endif
 
                 <div>
-                    <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username</label>
+                    <label for="username" class="block text-sm font-medium text-gray-700 mb-1">Username (Eg: admin)</label>
                     <div>
                         <input id="username" name="username" type="text" required class="appearance-none relative block w-full px-4 py-3 bg-gray-50 border border-gray-200
                                placeholder-gray-400 text-gray-900 rounded-lg focus:outline-none focus:ring-1
@@ -30,7 +30,7 @@
                 </div>
 
                 <div>
-                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password</label>
+                    <label for="password" class="block text-sm font-medium text-gray-700 mb-1">Password (Eg: password)</label>
                     <div>
                         <input id="password" name="password" type="password" required class="appearance-none relative block w-full px-4 py-3 bg-gray-50 border border-gray-200
                                placeholder-gray-400 text-gray-900 rounded-lg focus:outline-none focus:ring-1
