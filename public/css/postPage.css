@@ -38,10 +38,9 @@ html, body {
 
 .grid-container {
     display: grid;
-    /* grid-template-columns: auto 4fr 2fr; */
     grid-template-columns: auto 4fr;
     gap: 20px;
-    min-height: calc(100vh - 9.9vh); 
+    min-height: 100vh;
 }
 
 .grid-column {
