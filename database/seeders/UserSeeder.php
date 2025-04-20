@@ -21,6 +21,9 @@ class UserSeeder extends Seeder
         User::factory()->admin()->create();
 
         // Create a specific admin user
+        if (User::where('username', 'admin')->exists()) {
+            return;
+        }
         User::create([
             'username' => 'admin',
             'email' => 'admin@example.com',
