@@ -25,6 +25,4 @@ class Post extends Model
     {
         return $this->hasMany(Comment::class);
     }
-
-    public $timestamps = false;
 }
