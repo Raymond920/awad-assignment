@@ -174,6 +174,12 @@ tests/                # Automated tests
 4. Push to the branch: `git push origin feature/amazing-feature`
 5. Submit a pull request
 
+## 📜 Contributors
+
+<a href="https://github.com/Raymond920/awad-assignment/graphs/contributors">
+  <img src="https://contrib.rocks/image?repo=Raymond920/awad-assignment" />
+</a>
+
 ## License
 
 This project is academic coursework for Advanced Web Application Development module.
